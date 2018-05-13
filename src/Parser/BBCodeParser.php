@@ -67,12 +67,12 @@ final class BBCodeParser extends Parser
             'content' => '$1'
         ],
         'unorderedlist' => [
-            'pattern' => '/\[ul\](.*?)\[\/ul\]/s',
+            'pattern' => '/\[ul](.*?)\[\/ul\]/s',
             'replace' => '<ul>$1</ul>',
             'content' => '$1'
         ],
         'listitem' => [
-            'pattern' => '/\[li\](.*?)\[\/li\]/s',
+            'pattern' => '/\[li](.*?)\[\/li\]/s',
             'replace' => '<li>$1</li>',
             'content' => '$1'
         ],
@@ -137,7 +137,7 @@ final class BBCodeParser extends Parser
             'content' => '$1',
         ],
         'size' => [
-            'pattern' => '/\[size=(.+)](.+)\[/size\]/Usi',
+            'pattern' => '/\[size=(.+)](.+)\[\/size\]/s',
             'replace' => '<span class="font-size-$1">$2</span>',
             'content' => '$2',
         ],

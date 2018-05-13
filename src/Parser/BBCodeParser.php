@@ -136,6 +136,11 @@ final class BBCodeParser extends Parser
             'replace' => '<div style="text-align:right;">$1</div>',
             'content' => '$1',
         ],
+        'justify' => [
+            'pattern' => '/\[justify\](.*?)\[\/justify\]/s',
+            'replace' => '<div style="text-align:justify;">$1</div>',
+            'content' => '$1',
+        ],
         'size' => [
             'pattern' => '/\[size=(.+)](.+)\[\/size\]/s',
             'replace' => '<span class="font-size-$1">$2</span>',
@@ -152,6 +157,11 @@ final class BBCodeParser extends Parser
         return $source;
     }
 
+    public function nl2br($source)
+    {
+        return str_replace(array('\\r\\n','\r\\n','r\\n','\r\n', '\n', '\r'), '<br />', nl2br($source));
+    }
+
     public function parse(string $source, $caseInsensitive = null): string
     {
         $caseInsensitive = $caseInsensitive === self::CASE_INSENSITIVE ? true : false;
@@ -162,6 +172,6 @@ final class BBCodeParser extends Parser
             $source = $this->searchAndReplace($pattern, $parser['replace'], $source);
         }
 
-        return $source;
+        return $this->nl2br($source);
     }
 }

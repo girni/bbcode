@@ -142,7 +142,7 @@ final class BBCodeParser extends Parser
             'content' => '$1',
         ],
         'size' => [
-            'pattern' => '/\[size=(.+)](.+)\[\/size\]/s',
+            'pattern' => '/\[size=(.+)](.+)\[/size\]/Usi',
             'replace' => '<span class="font-size-$1">$2</span>',
             'content' => '$2',
         ],
